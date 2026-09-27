@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard - POS Gaming</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<aside id="sidebar">
+<header>
+<h2>CyberPOS</h2>
+</header>
+<nav>
+<a href="dashboard.html" class="active">
+<span>🖥️</span> Monitoreo
+</a>
+<a href="crud.html">
+<span>🍔</span> Inventario
+</a>
+<a href="#" onclick="event.preventDefault()">
+<span>⚙️</span> Configuración
+</a>
+<a href="login.html">
+<span>🚪</span> Salir
+</a>
+</nav>
+</aside>
+<main>
+<header class="topbar">
+<button class="hamburger" id="menuBtn">☰</button>
+<figure>
+<img src="logo-laneros.jpg" alt="Avatar Admin Laneros Gamer">
+<figcaption>Admin User</figcaption>
+</figure>
+</header>
+<section class="content">
+<header class="section-header">
+<h2>Dashboard General</h2>
+</header>
+<section class="kpi-grid">
+<article class="kpi-card">
+<h3>Ingresos del Día</h3>
+<p>$450.00</p>
+</article>
+<article class="kpi-card">
+<h3>PCs Activas</h3>
+<p>12/20</p>
+</article>
+<article class="kpi-card">
+<h3>Consolas Activas</h3>
+<p>5/8</p>
+</article>
+<article class="kpi-card">
+<h3>Pedidos Pendientes</h3>
+<p>3</p>
+</article>
+</section>
+<header class="section-header">
+<h2>Equipos</h2>
+<form class="toolbar" onsubmit="event.preventDefault()">
+<fieldset class="search-bar">
+<input type="text" placeholder="Buscar equipo...">
+<button class="primary" type="button">Buscar</button>
+</fieldset>
+</form>
+</header>
+<section class="devices-grid">
+<article class="device-card">
+<header class="device-header">
+<h3>PC 01</h3>
+<mark class="status-badge active">Activa</mark>
+</header>
+<section class="device-body">
+<time>00:45:00</time>
+<button class="primary">Añadir Tiempo</button>
+</section>
+</article>
+<article class="device-card">
+<header class="device-header">
+<h3>PC 02</h3>
+<mark class="status-badge inactive">Inactiva</mark>
+</header>
+<section class="device-body">
+<time>00:00:00</time>
+<button class="primary">Añadir Tiempo</button>
+</section>
+</article>
+<article class="device-card">
+<header class="device-header">
+<h3>Consola 01</h3>
+<mark class="status-badge active">Activa</mark>
+</header>
+<section class="device-body">
+<time>01:15:30</time>
+<button class="primary">Añadir Tiempo</button>
+</section>
+</article>
+<article class="device-card">
+<header class="device-header">
+<h3>Consola 02</h3>
+<mark class="status-badge inactive">Inactiva</mark>
+</header>
+<section class="device-body">
+<time>00:00:00</time>
+<button class="primary">Añadir Tiempo</button>
+</section>
+</article>
+</section>
+</section>
+</main>
+<script>
+const menuBtn = document.getElementById('menuBtn');
+const sidebar = document.getElementById('sidebar');
+menuBtn.addEventListener('click', () => {
+sidebar.classList.toggle('open');
+});
+</script>
+</body>
+</html>

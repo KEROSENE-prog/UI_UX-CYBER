@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar Sesión - POS Gaming</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    main.auth-page {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 24px;
+      background-image: linear-gradient(rgba(10, 10, 10, 0.85), rgba(53, 192, 41, 0.4)), url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070');
+      background-size: cover;
+      background-position: center;
+    }
+
+    article.auth-card {
+      background-color: var(--bg-card);
+      padding: 40px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 400px;
+      border-top: 4px solid var(--brand-primary);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    }
+
+    header.auth-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    header.auth-header h1 {
+      color: var(--brand-primary);
+      margin-bottom: 8px;
+    }
+
+    form.auth-form fieldset {
+      border: none;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    p.form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    p.form-group label {
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    p.form-options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+
+    p.form-options a {
+      color: var(--brand-primary);
+      text-decoration: none;
+    }
+
+    footer.auth-footer {
+      margin-top: 24px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    footer.auth-footer a {
+      color: var(--brand-primary);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .role-tabs {
+      display: flex;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .role-tabs button {
+      flex: 1;
+      background: transparent;
+      color: var(--text-muted);
+      border-radius: 0;
+      padding: 12px;
+    }
+
+    .role-tabs button.active {
+      color: var(--brand-primary);
+      border-bottom: 2px solid var(--brand-primary);
+    }
+
+    .floating-design-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background-color: var(--brand-primary);
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 12px rgba(53, 192, 41, 0.4);
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    .floating-design-btn:hover {
+      background-color: var(--brand-hover);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+
+<body>
+  <main class="auth-page">
+    <article class="auth-card">
+      <header class="auth-header">
+        <h1>CyberPOS</h1>
+        <p>Inicia sesión en tu cuenta</p>
+      </header>
+      <nav class="role-tabs">
+        <button class="active" type="button">Cliente</button>
+        <button type="button">Administrador</button>
+      </nav>
+      <form class="auth-form" action="dashboard.html">
+        <fieldset>
+          <p class="form-group">
+            <label for="email">Correo</label>
+            <input type="text" id="email" required placeholder="Ingresa tu correo">
+          </p>
+          <p class="form-group">
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" required placeholder="••••••••">
+          </p>
+          <p class="form-options">
+            <label><input type="checkbox"> Recordar sesión</label>
+            <a href="#">¿Olvidaste tu contraseña?</a>
+          </p>
+          <button type="submit" class="primary" style="width:100%; padding: 14px;">Ingresar</button>
+        </fieldset>
+      </form>
+      <footer class="auth-footer">
+        <p>¿No tienes cuenta? <a href="registro.html">Regístrate aquí</a></p>
+      </footer>
+    </article>
+  </main>
+  <a href="sistema_diseno.html" class="floating-design-btn"> Diseño Sistema</a>
+  <script>
+    const tabs = document.querySelectorAll('.role-tabs button');
+    tabs.forEach(tab => {
+      tab.addEventListener('click', (e) => {
+        tabs.forEach(t => t.classList.remove('active'));
+        e.target.classList.add('active');
+      });
+    });
+  </script>
+</body>
+
+</html>

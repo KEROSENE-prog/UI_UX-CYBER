@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inventario - POS Gaming</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<aside id="sidebar">
+<header>
+<h2>CyberPOS</h2>
+</header>
+<nav>
+<a href="dashboard.html">
+<span>🖥️</span> Monitoreo
+</a>
+<a href="crud.html" class="active">
+<span>🍔</span> Inventario
+</a>
+<a href="#" onclick="event.preventDefault()">
+<span>⚙️</span> Configuración
+</a>
+<a href="login.html">
+<span>🚪</span> Salir
+</a>
+</nav>
+</aside>
+<main>
+<header class="topbar">
+<button class="hamburger" id="menuBtn">☰</button>
+<figure>
+<img src="logo-laneros.jpg" alt="Avatar Admin Laneros Gamer">
+<figcaption>Admin User</figcaption>
+</figure>
+</header>
+<section class="content">
+<header class="section-header">
+<h2>Catálogo de Snacks</h2>
+<form class="toolbar" onsubmit="event.preventDefault()">
+<fieldset class="search-bar">
+<input type="text" placeholder="Buscar snack...">
+<select>
+<option value="all">Todas las categorías</option>
+<option value="bebidas">Bebidas</option>
+<option value="comida">Comida</option>
+</select>
+<button class="primary" id="btnNuevo" type="button">+ Nuevo</button>
+</fieldset>
+</form>
+</header>
+<section class="snacks-grid">
+<article class="snack-card">
+<img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=500&q=80" alt="Refresco" class="snack-image">
+<section class="snack-info">
+<h3>Bebida Energética</h3>
+<p class="snack-meta">
+<data class="snack-price" value="2.50">$2.50</data>
+<span>Stock: 24</span>
+</p>
+</section>
+<footer class="card-actions">
+<button class="secondary btn-editar">Editar</button>
+<button class="danger btn-eliminar">Eliminar</button>
+</footer>
+</article>
+<article class="snack-card">
+<img src="https://images.unsplash.com/photo-1576618148400-f54bed99fcfd?w=500&q=80" alt="Snack" class="snack-image">
+<section class="snack-info">
+<h3>Papas Fritas</h3>
+<p class="snack-meta">
+<data class="snack-price" value="1.50">$1.50</data>
+<span>Stock: 15</span>
+</p>
+</section>
+<footer class="card-actions">
+<button class="secondary btn-editar">Editar</button>
+<button class="danger btn-eliminar">Eliminar</button>
+</footer>
+</article>
+<article class="snack-card">
+<img src="https://images.unsplash.com/photo-1599599810694-b5b37304c041?w=500&q=80" alt="Dulce" class="snack-image">
+<section class="snack-info">
+<h3>Chocolate</h3>
+<p class="snack-meta">
+<data class="snack-price" value="1.00">$1.00</data>
+<span>Stock: 30</span>
+</p>
+</section>
+<footer class="card-actions">
+<button class="secondary btn-editar">Editar</button>
+<button class="danger btn-eliminar">Eliminar</button>
+</footer>
+</article>
+</section>
+</section>
+</main>
+<dialog id="modalForm">
+<article class="modal-content">
+<header class="modal-header">
+<h3 id="modalTitle">Nuevo Snack</h3>
+<button class="close-modal" id="btnCloseModal">×</button>
+</header>
+<form id="snackForm" onsubmit="event.preventDefault()">
+<fieldset class="form-fields">
+<p class="form-group">
+<label for="snackName">Nombre</label>
+<input type="text" id="snackName" required>
+</p>
+<p class="form-group">
+<label for="snackPrice">Precio ($)</label>
+<input type="number" id="snackPrice" step="0.01" required>
+</p>
+<p class="form-group">
+<label for="snackStock">Stock</label>
+<input type="number" id="snackStock" required>
+</p>
+<p class="form-group">
+<label for="snackImage">URL Imagen</label>
+<input type="url" id="snackImage" required>
+</p>
+</fieldset>
+<footer class="modal-actions">
+<button type="button" class="secondary" id="btnCancelModal">Cancelar</button>
+<button type="submit" class="primary">Guardar</button>
+</footer>
+</form>
+</article>
+</dialog>
+<dialog id="modalDelete">
+<article class="modal-content">
+<header class="modal-header">
+<h3>¿Está seguro de eliminar este registro?</h3>
+<button class="close-modal" id="btnCloseDelete">×</button>
+</header>
+<form onsubmit="event.preventDefault()">
+<fieldset class="form-fields">
+<p>Esta acción no se puede deshacer.</p>
+</fieldset>
+<footer class="modal-actions">
+<button type="button" class="secondary" id="btnCancelDelete">Cancelar</button>
+<button type="button" class="danger">Eliminar</button>
+</footer>
+</form>
+</article>
+</dialog>
+<script>
+const menuBtn = document.getElementById('menuBtn');
+const sidebar = document.getElementById('sidebar');
+const modalForm = document.getElementById('modalForm');
+const modalDelete = document.getElementById('modalDelete');
+const btnNuevo = document.getElementById('btnNuevo');
+const btnCloseModal = document.getElementById('btnCloseModal');
+const btnCancelModal = document.getElementById('btnCancelModal');
+const btnCloseDelete = document.getElementById('btnCloseDelete');
+const btnCancelDelete = document.getElementById('btnCancelDelete');
+const btnsEditar = document.querySelectorAll('.btn-editar');
+const btnsEliminar = document.querySelectorAll('.btn-eliminar');
+const modalTitle = document.getElementById('modalTitle');
+menuBtn.addEventListener('click', () => {
+sidebar.classList.toggle('open');
+});
+btnNuevo.addEventListener('click', () => {
+modalTitle.textContent = 'Nuevo Snack';
+modalForm.showModal();
+});
+btnsEditar.forEach(btn => {
+btn.addEventListener('click', () => {
+modalTitle.textContent = 'Editar Snack';
+modalForm.showModal();
+});
+});
+btnsEliminar.forEach(btn => {
+btn.addEventListener('click', () => {
+modalDelete.showModal();
+});
+});
+const closeForm = () => modalForm.close();
+const closeDelete = () => modalDelete.close();
+btnCloseModal.addEventListener('click', closeForm);
+btnCancelModal.addEventListener('click', closeForm);
+btnCloseDelete.addEventListener('click', closeDelete);
+btnCancelDelete.addEventListener('click', closeDelete);
+</script>
+</body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistema de Diseño - POS Gaming</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+.design-section {
+  padding: 40px;
+  border-bottom: 1px solid var(--border-color);
+}
+.design-section h2 {
+  color: var(--brand-primary);
+  margin-bottom: 24px;
+}
+.color-palette {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+}
+.color-swatch {
+  height: 100px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+.color-card {
+  background-color: var(--bg-card);
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+.typography-sample {
+  background-color: var(--bg-card);
+  padding: 24px;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+.btn-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  align-items: center;
+}
+.form-sample {
+  background-color: var(--bg-card);
+  padding: 24px;
+  border-radius: 12px;
+  max-width: 500px;
+}
+input.error {
+  border-color: var(--brand-danger);
+}
+input.error:focus {
+  box-shadow: 0 0 0 3px rgba(153, 27, 27, 0.2);
+}
+.toast-container {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 1000;
+}
+.toast {
+  background-color: var(--bg-card);
+  border-left: 4px solid var(--brand-primary);
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 300px;
+  animation: slideIn 0.3s ease forwards;
+}
+.toast.success {
+  border-left-color: var(--brand-success);
+}
+.toast.error {
+  border-left-color: var(--brand-danger);
+}
+.toast time {
+  font-weight: bold;
+  color: var(--text-muted);
+}
+.toast button {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+}
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+.toast.closing {
+  transform: translateX(100%);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+</style>
+</head>
+<body>
+<main>
+<header class="topbar">
+<h2>Sistema de Diseño - Living Style Guide</h2>
+</header>
+<section class="design-section">
+<h2>1. Paleta de Colores</h2>
+<article class="color-palette">
+<figure class="color-card">
+<span class="color-swatch" style="display:block; background-color: #0a0a0a;"></span>
+<figcaption>
+<strong>Obsidian Black</strong>
+<p>#0a0a0a</p>
+<p>--brand-dark</p>
+</figcaption>
+</figure>
+<figure class="color-card">
+<span class="color-swatch" style="display:block; background-color: #35c029;"></span>
+<figcaption>
+<strong>Laneros Green</strong>
+<p>#35c029</p>
+<p>--brand-primary</p>
+</figcaption>
+</figure>
+<figure class="color-card">
+<span class="color-swatch" style="display:block; background-color: #2da323;"></span>
+<figcaption>
+<strong>Laneros Hover</strong>
+<p>#2da323</p>
+<p>--brand-hover</p>
+</figcaption>
+</figure>
+<figure class="color-card">
+<span class="color-swatch" style="display:block; background-color: #227d1a;"></span>
+<figcaption>
+<strong>Laneros Active</strong>
+<p>#227d1a</p>
+<p>--brand-wine</p>
+</figcaption>
+</figure>
+<figure class="color-card">
+<span class="color-swatch" style="display:block; background-color: #144a0f;"></span>
+<figcaption>
+<strong>Laneros Dark</strong>
+<p>#144a0f</p>
+<p>--brand-maroon</p>
+</figcaption>
+</figure>
+</article>
+</section>
+
+<section class="design-section">
+<h2>2. Tipografía Oficial</h2>
+<article class="typography-sample">
+<h1>H1 - Título Principal (Outfit Bold)</h1>
+<h2>H2 - Título de Sección (Outfit Bold)</h2>
+<h3>H3 - Subtítulo de Tarjeta (Outfit Bold)</h3>
+<p>Texto Base (Inter Regular). La legibilidad en pantallas de baja resolución es fundamental. Por eso, Inter se utiliza para todo el texto descriptivo, labels de formularios y tablas densas.</p>
+</article>
+</section>
+
+<section class="design-section">
+<h2>3. Catálogo de Botones (4 Estados)</h2>
+<article class="btn-gallery">
+<fieldset style="border: none; padding: 10px;">
+<legend>Normal</legend>
+<button class="primary" type="button">Primario</button>
+<button class="secondary" type="button" style="margin-top:10px;">Secundario</button>
+<button class="danger" type="button" style="margin-top:10px;">Peligro</button>
+<button class="success" type="button" style="margin-top:10px;">Éxito</button>
+</fieldset>
+<fieldset style="border: none; padding: 10px;">
+<legend>:hover (Simulado)</legend>
+<button class="primary" type="button" style="background-color: var(--brand-hover); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(53, 192, 41, 0.4);">Primario</button>
+</fieldset>
+<fieldset style="border: none; padding: 10px;">
+<legend>:focus (Simulado)</legend>
+<button class="primary" type="button" style="outline: 2px solid var(--brand-primary); outline-offset: 2px;">Primario</button>
+</fieldset>
+<fieldset style="border: none; padding: 10px;">
+<legend>:disabled</legend>
+<button class="primary" type="button" disabled>Primario</button>
+<button class="danger" type="button" disabled style="margin-top:10px;">Peligro</button>
+</fieldset>
+</article>
+</section>
+
+<section class="design-section">
+<h2>4. Controles de Formulario</h2>
+<form class="form-sample" onsubmit="event.preventDefault()">
+<fieldset style="border: none; display: flex; flex-direction: column; gap: 16px;">
+<p class="form-group">
+<label>Input Normal</label>
+<input type="text" placeholder="Escribe aquí...">
+</p>
+<p class="form-group">
+<label>Input Focus (Simulado)</label>
+<input type="text" style="outline: none; border-color: var(--brand-primary); box-shadow: 0 0 0 3px rgba(53, 192, 41, 0.2);" value="Texto focus">
+</p>
+<p class="form-group">
+<label>Input Error</label>
+<input type="text" class="error" value="Dato inválido">
+</p>
+<p class="form-group">
+<label>Input Disabled</label>
+<input type="text" disabled value="No editable">
+</p>
+<p class="form-group">
+<label>Select</label>
+<select>
+<option>Opción 1</option>
+</select>
+</p>
+</fieldset>
+</form>
+</section>
+
+<section class="design-section">
+<h2>5. Modales y Toast (Interacción en Vivo)</h2>
+<menu style="display: flex; gap: 16px; padding: 0; flex-wrap: wrap;">
+<button class="success" id="btnModalSuccess" type="button">Modal de Éxito</button>
+<button class="danger" id="btnModalError" type="button">Modal de Error</button>
+<button class="secondary" id="btnModalConfirm" type="button">Modal Confirmación</button>
+<button class="primary" id="btnToast" type="button">Lanzar Toast Temporizado</button>
+</menu>
+</section>
+
+</main>
+
+<aside class="toast-container" id="toastContainer"></aside>
+
+<dialog id="modalSuccess">
+<article class="modal-content">
+<header class="modal-header">
+<h3 style="color: var(--brand-success)">¡Registro Exitoso!</h3>
+</header>
+<section>
+<p>Los datos fueron guardados correctamente.</p>
+</section>
+<footer class="modal-actions" style="margin-top:24px;">
+<button type="button" class="success" onclick="document.getElementById('modalSuccess').close()">Aceptar</button>
+</footer>
+</article>
+</dialog>
+
+<dialog id="modalError">
+<article class="modal-content">
+<header class="modal-header">
+<h3 style="color: var(--brand-danger)">Error al procesar</h3>
+</header>
+<section>
+<p>Verifique los campos obligatorios antes de continuar.</p>
+</section>
+<footer class="modal-actions" style="margin-top:24px;">
+<button type="button" class="secondary" onclick="document.getElementById('modalError').close()">Cerrar</button>
+<button type="button" class="danger" onclick="document.getElementById('modalError').close()">Reintentar</button>
+</footer>
+</article>
+</dialog>
+
+<dialog id="modalConfirm">
+<article class="modal-content">
+<header class="modal-header">
+<h3 style="color: #f59e0b">¿Está seguro de eliminar este registro?</h3>
+</header>
+<section>
+<p>Esta acción no se puede deshacer.</p>
+</section>
+<footer class="modal-actions" style="margin-top:24px;">
+<button type="button" class="secondary" onclick="document.getElementById('modalConfirm').close()">Cancelar</button>
+<button type="button" class="danger" onclick="document.getElementById('modalConfirm').close()">Eliminar</button>
+</footer>
+</article>
+</dialog>
+
+<script>
+document.getElementById('btnModalSuccess').addEventListener('click', () => {
+document.getElementById('modalSuccess').showModal();
+});
+document.getElementById('btnModalError').addEventListener('click', () => {
+document.getElementById('modalError').showModal();
+});
+document.getElementById('btnModalConfirm').addEventListener('click', () => {
+document.getElementById('modalConfirm').showModal();
+});
+
+document.getElementById('btnToast').addEventListener('click', () => {
+const container = document.getElementById('toastContainer');
+const toast = document.createElement('article');
+toast.className = 'toast';
+let seconds = 5;
+toast.innerHTML = `
+<span>✅ Acción completada</span>
+<time>${seconds}s</time>
+<button type="button">✕</button>
+`;
+container.appendChild(toast);
+const timeEl = toast.querySelector('time');
+const btnClose = toast.querySelector('button');
+
+const interval = setInterval(() => {
+seconds--;
+if(seconds > 0) {
+timeEl.textContent = `${seconds}s`;
+} else {
+clearInterval(interval);
+toast.classList.add('closing');
+setTimeout(() => toast.remove(), 300);
+}
+}, 1000);
+
+btnClose.addEventListener('click', () => {
+clearInterval(interval);
+toast.classList.add('closing');
+setTimeout(() => toast.remove(), 300);
+});
+});
+</script>
+</body>
+</html>
